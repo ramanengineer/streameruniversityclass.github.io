@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Streamer University Class of 2025</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #3a2a24;
+      --secondary-bg: #16213e;
+      --accent: #ff007b;
+      --text: #ffffff;
+      --rules-bg: #2a2a3a;
+      --color-bitcoin: #F7931A;
+      --color-ethereum: #3C3C3D;
+      --banner-bg: linear-gradient(90deg, var(--primary-bg), var(--secondary-bg));
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg));
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+      padding: 1.5rem;
+      padding-top: 6rem; /* Space for fixed banner */
+    }
+
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-weight: 700; text-align: center; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* Fixed Top Banner */
+    .top-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--banner-bg);
+      border-bottom: 2px solid var(--accent);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .top-banner h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      text-shadow: 0 0 5px rgba(255, 0, 123, 0.5);
+    }
+
+    .top-banner p {
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .banner-actions {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .banner-button {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .banner-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .banner-button-visit {
+      background: var(--accent);
+    }
+
+    .banner-button-visit:hover {
+      background: #e6006e;
+    }
+
+    .banner-button-btc {
+      background: var(--color-bitcoin);
+    }
+
+    .banner-button-btc:hover {
+      background: #e0861a;
+    }
+
+    .banner-button-eth {
+      background: var(--color-ethereum);
+    }
+
+    .banner-button-eth:hover {
+      background: #2c2c2c;
+    }
+
+    /* Main Layout */
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Intro */
+    .intro {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      margin-bottom: 0.75rem;
+      color: var(--accent);
+      text-shadow: 0 0 8px rgba(255, 0, 123, 0.3);
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    /* Sections */
+    .section {
+      width: 100%;
+      margin-bottom: 3rem;
+    }
+
+    .section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      text-shadow: 0 0 5px rgba(255, 0, 123, 0.3);
+    }
+
+    /* People Grid */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .person-card {
+      background: var(--rules-bg);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .person-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      border-color: var(--accent);
+    }
+
+    .person-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--rules-bg);
+      color: var(--text);
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+        padding-top: 7rem;
+      }
+
+      .top-banner {
+        padding: 0.75rem;
+      }
+
+      .top-banner h2 {
+        font-size: 1.2rem;
+      }
+
+      .top-banner p {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .banner-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      .banner-button img {
+        width: 14px;
+        height: 14px;
+      }
+
+      .intro h1 {
+        font-size: 2.2rem;
+      }
+
+      .intro p {
+        font-size: 1rem;
+      }
+
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .people-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1rem;
+      }
+
+      .person-card {
+        padding: 1rem;
+      }
+
+      .person-card h3 {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding-top: 8rem;
+      }
+
+      .top-banner h2 {
+        font-size: 1rem;
+      }
+
+      .top-banner p {
+        font-size: 0.7rem;
+      }
+
+      .banner-button {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+      }
+
+      .banner-button img {
+        width: 12px;
+        height: 12px;
+      }
+
+      .intro h1 {
+        font-size: 1.8rem;
+      }
+
+      .intro p {
+        font-size: 0.9rem;
+      }
+
+      .section h2 {
+        font-size: 1.5rem;
+      }
+
+      .people-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem;
+      }
+
+      .person-card {
+        padding: 0.75rem;
+      }
+
+      .person-card h3 {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Fixed Top Banner -->
+  <div class="top-banner">
+    <h2>Check Out ogvk.org!</h2>
+    <p>Join the ultimate streaming community at ogvk.org. Support us with BTC or ETH!</p>
+    <div class="banner-actions">
+      <a href="https://ogvk.org" class="banner-button banner-button-visit">Visit ogvk.org</a>
+      <button class="banner-button banner-button-btc" data-copy="bc1qa0ynpvwhnjehfp06cerlvrrfdqvaeeyrekaa9d">
+        <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin Logo" style="width: 16px; height: 16px;">
+        Copy BTC Address
+      </button>
+      <button class="banner-button banner-button-eth" data-copy="0xF84E4324F59587dc220597429E153D2f244B2548">
+        <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum Logo" style="width: 16px; height: 16px;">
+        Copy ETH Address
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="intro">
+      <h1>Streamer University Class of 2025</h1>
+      <p>Welcome to the inaugural class of Kai Cenat's Streamer University! Meet the talented professors and students shaping the future of content creation.</p>
+    </div>
+
+    <!-- Professors Section -->
+    <div class="section">
+      <h2>Professors</h2>
+      <div class="people-grid">
+        <div class="person-card"><h3>DDG</h3></div>
+        <div class="person-card"><h3>Chrisnxtdoor</h3></div>
+        <div class="person-card"><h3>Agent 00</h3></div>
+        <div class="person-card"><h3>CookinWitKya</h3></div>
+        <div class="person-card"><h3>India Love</h3></div>
+        <div class="person-card"><h3>Iamthekingoffitness</h3></div>
+        <div class="person-card"><h3>ImDontai</h3></div>
+        <div class="person-card"><h3>Markus King</h3></div>
+        <div class="person-card"><h3>Duke Dennis</h3></div>
+        <div class="person-card"><h3>Cindy Gallop</h3></div>
+        <div class="person-card"><h3>Extra Emily</h3></div>
+        <div class="person-card"><h3>Preacherquís</h3></div>
+        <div class="person-card"><h3>AimHigh</h3></div>
+        <div class="person-card"><h3>Kaysan</h3></div>
+        <div class="person-card"><h3>Zias</h3></div>
+        <div class="person-card"><h3>B Lou</h3></div>
+        <div class="person-card"><h3>Funny Marco</h3></div>
+        <div class="person-card"><h3>Ojay Suave</h3></div>
+      </div>
+    </div>
+
+    <!-- Students Section -->
+    <div class="section">
+      <h2>Students</h2>
+      <div class="people-grid">
+        <div class="person-card"><h3>HoneyyJade</h3></div>
+        <div class="person-card"><h3>Thinks</h3></div>
+        <div class="person-card"><h3>BrookFrost</h3></div>
+        <div class="person-card"><h3>Saryah</h3></div>
+        <div class="person-card"><h3>MyTen Makayla</h3></div>
+        <div class="person-card"><h3>Folaas</h3></div>
+        <div class="person-card"><h3>Scum TK</h3></div>
+        <div class="person-card"><h3>Shello</h3></div>
+        <div class="person-card"><h3>IamTinkT</h3></div>
+        <div class="person-card"><h3>Chicklet</h3></div>
+        <div class="person-card"><h3>Nina</h3></div>
+        <div class="person-card"><h3>Aaverie Iman</h3></div>
+        <div class="person-card"><h3>NolimitT</h3></div>
+        <div class="person-card"><h3>Juvetti</h3></div>
+        <div class="person-card"><h3>Strifecos</h3></div>
+        <div class="person-card"><h3>Gianni (GCTwins)</h3></div>
+        <div class="person-card"><h3>Meyrzam</h3></div>
+        <div class="person-card"><h3>LightSkinMonte</h3></div>
+        <div class="person-card"><h3>Yonna-4</h3></div>
+        <div class="person-card"><h3>Shank</h3></div>
+        <div class="person-card"><h3>Sophie Hyder</h3></div>
+        <div class="person-card"><h3>Brischee</h3></div>
+        <div class="person-card"><h3>Reggie</h3></div>
+        <div class="person-card"><h3>JankyRando</h3></div>
+        <div class="person-card"><h3>Rakai</h3></div>
+        <div class="person-card"><h3>Danny Bans</h3></div>
+        <div class="person-card"><h3>RipTRandy</h3></div>
+        <div class="person-card"><h3>Ayesmii</h3></div>
+        <div class="person-card"><h3>Tota</h3></div>
+        <div class="person-card"><h3>GiovaniGCTwins</h3></div>
+        <div class="person-card"><h3>SunnyMaharie</h3></div>
+        <div class="person-card"><h3>BarbieSkie</h3></div>
+        <div class="person-card"><h3>Izzy Kinda</h3></div>
+        <div class="person-card"><h3>Maleni (Chicklet)</h3></div>
+        <div class="person-card"><h3>HoodBabies</h3></div>
+        <div class="person-card"><h3>Wendy Ortiz</h3></div>
+        <div class="person-card"><h3>Evelyn Ortiz</h3></div>
+        <div class="person-card"><h3>BigWinna</h3></div>
+        <div class="person-card"><h3>Mrs Chim Chim</h3></div>
+        <div class="person-card"><h3>Maxwell Ye</h3></div>
+        <div class="person-card"><h3>2kboo</h3></div>
+        <div class="person-card"><h3>Corey2u</h3></div>
+        <div class="person-card"><h3>Aya</h3></div>
+        <div class="person-card"><h3>Punga</h3></div>
+        <div class="person-card"><h3>KeyahTheCreator</h3></div>
+        <div class="person-card"><h3>GinalaTshek</h3></div>
+        <div class="person-card"><h3>Junniehime</h3></div>
+        <div class="person-card"><h3>snowcone</h3></div>
+        <div class="person-card"><h3>Autumn Reign</h3></div>
+        <div class="person-card"><h3>Valan</h3></div>
+        <div class="person-card"><h3>Sara Sheehan</h3></div>
+        <div class="person-card"><h3>Mari</h3></div>
+        <div class="person-card"><h3>Vanessa Loud</h3></div>
+        <div class="person-card"><h3>SaltyGummiBear</h3></div>
+        <div class="person-card"><h3>Allison Kroes</h3></div>
+        <div class="person-card"><h3>Ray</h3></div>
+        <div class="person-card"><h3>Dezz</h3></div>
+        <div class="person-card"><h3>Thickey</h3></div>
+        <div class="person-card"><h3>Treasure Osiria</h3></div>
+        <div class="person-card"><h3>LightSkin Kim</h3></div>
+        <div class="person-card"><h3>Jamal</h3></div>
+        <div class="person-card"><h3>KingSammelot</h3></div>
+        <div class="person-card"><h3>Caiwus</h3></div>
+        <div class="person-card"><h3>Tueda Geez</h3></div>
+        <div class="person-card"><h3>Jay Cinco</h3></div>
+        <div class="person-card"><h3>Sholly KNS</h3></div>
+        <div class="person-card"><h3>Kelo</h3></div>
+        <div class="person-card"><h3>TurnBaby</h3></div>
+        <div class="person-card"><h3>BlasianyBabyLo</h3></div>
+        <div class="person-card"><h3>Khabes</h3></div>
+        <div class="person-card"><h3>Catalista</h3></div>
+        <div class="person-card"><h3>PrimePage</h3></div>
+        <div class="person-card"><h3>Dajeromo</h3></div>
+        <div class="person-card"><h3>Wande (Jam World TV)</h3></div>
+        <div class="person-card"><h3>Jo (Jam World TV)</h3></div>
+        <div class="person-card"><h3>IvanBetter</h3></div>
+        <div class="person-card"><h3>Alex and Jessica</h3></div>
+        <div class="person-card"><h3>BDestined</h3></div>
+        <div class="person-card"><h3>JPTGames</h3></div>
+        <div class="person-card"><h3>Kishka</h3></div>
+        <div class="person-card"><h3>Okaysirr</h3></div>
+        <div class="person-card"><h3>Tyli</h3></div>
+        <div class="person-card"><h3>Marcissist</h3></div>
+        <div class="person-card"><h3>CrushExotics</h3></div>
+        <div class="person-card"><h3>DatBoiGio</h3></div>
+        <div class="person-card"><h3>Emildziv</h3></div>
+        <div class="person-card"><h3>Yohan Uja</h3></div>
+        <div class="person-card"><h3>Raud</h3></div>
+        <div class="person-card"><h3>Nizzy</h3></div>
+        <div class="person-card"><h3>KokoNata</h3></div>
+        <div class="person-card"><h3>AlidoGotti</h3></div>
+        <div class="person-card"><h3>Evelyn and Bobby</h3></div>
+        <div class="person-card"><h3>Dabo</h3></div>
+        <div class="person-card"><h3>Arky</h3></div>
+        <div class="person-card"><h3>VBoogie</h3></div>
+        <div class="person-card"><h3>Ash Alk</h3></div>
+        <div class="person-card"><h3>Quan</h3></div>
+        <div class="person-card"><h3>EmilyCC</h3></div>
+        <div class="person-card"><h3>SamHam</h3></div>
+        <div class="person-card"><h3>LaLa</h3></div>
+        <div class="person-card"><h3>Iuvcynthia</h3></div>
+        <div class="person-card"><h3>Bribev</h3></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toast notification function
+      function showToast(message) {
+        let toast = document.querySelector('.toast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.className = 'toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+
+      // Copy to clipboard function
+      function copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          showToast(`Copied to clipboard: ${text}`);
+        } catch (e) {
+          showToast('Failed to copy to clipboard. Please try again.');
+          console.error('Copy failed:', e);
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+
+      // Add click events to BTC and ETH buttons
+      function bindCryptoButtons() {
+        document.querySelectorAll('.banner-button-btc').forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            copyToClipboard(button.getAttribute('data-copy'));
+          });
+        });
+
+        document.querySelectorAll('.banner-button-eth').forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            copyToClipboard(button.getAttribute('data-copy'));
+          });
+        });
+      }
+
+      // Initial binding of crypto buttons
+      bindCryptoButtons();
+    });
+  </script>
+</body>
+</html>
