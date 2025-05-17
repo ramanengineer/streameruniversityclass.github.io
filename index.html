@@ -3,7 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Streamer University Class of 2025</title>
+  <title>Streamer University Class of 2025 | Kai Cenat's Inaugural Cohort</title>
+  <meta name="description" content="Discover the Streamer University Class of 2025 by Kai Cenat. Meet the 18 professors and 104 students shaping the future of content creation.">
+  <meta name="keywords" content="Streamer University, Class of 2025, Kai Cenat, professors, students, content creators, streaming, influencer program">
+  <meta name="author" content="Streamer University">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph for Social Sharing -->
+  <meta property="og:title" content="Streamer University Class of 2025 | Kai Cenat's Inaugural Cohort">
+  <meta property="og:description" content="Meet the 18 professors and 104 students of Kai Cenat's Streamer University Class of 2025. Join the future of content creation!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://streameruniversityclass.com">
+  <meta property="og:image" content="https://streameruniversityclass.com/images/streamer-university-logo.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Streamer University Class of 2025 | Kai Cenat's Inaugural Cohort">
+  <meta name="twitter:description" content="Meet the 18 professors and 104 students of Kai Cenat's Streamer University Class of 2025. Join the future of content creation!">
+  <meta name="twitter:image" content="https://streameruniversityclass.com/images/streamer-university-logo.jpg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://streameruniversityclass.com/favicon.png">
+  
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -32,7 +53,7 @@
       overflow-x: hidden;
       line-height: 1.6;
       padding: 1.5rem;
-      padding-top: 6rem; /* Space for fixed banner */
+      padding-top: 6rem; /* Initial padding, adjusted dynamically by JS */
     }
 
     a { color: inherit; text-decoration: none; }
@@ -116,6 +137,35 @@
       background: #2c2c2c;
     }
 
+    /* Search Bar */
+    .search-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: var(--rules-bg);
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .search-bar:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 8px rgba(255, 0, 123, 0.3);
+    }
+
+    .search-bar::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
     /* Main Layout */
     .container {
       display: flex;
@@ -151,6 +201,8 @@
     .section {
       width: 100%;
       margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .section h2 {
@@ -168,12 +220,16 @@
     }
 
     .person-card {
-      background: var(--rules-bg);
+      background: linear-gradient(135deg, var(--rules-bg), #3a3a4a);
       border-radius: 12px;
       padding: 1.25rem;
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     .person-card:hover {
@@ -186,6 +242,45 @@
       font-size: 1.2rem;
       font-weight: 500;
       color: var(--text);
+    }
+
+    .google-search-btn {
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .google-search-btn:hover {
+      background: #e6006e;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 2rem;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #e6006e;
     }
 
     /* Toast Notification */
@@ -239,6 +334,11 @@
         height: 14px;
       }
 
+      .search-bar {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
       .intro h1 {
         font-size: 2.2rem;
       }
@@ -262,6 +362,15 @@
 
       .person-card h3 {
         font-size: 1rem;
+      }
+
+      .google-search-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+      footer p {
+        font-size: 0.85rem;
       }
     }
 
@@ -288,6 +397,11 @@
         height: 12px;
       }
 
+      .search-bar {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.85rem;
+      }
+
       .intro h1 {
         font-size: 1.8rem;
       }
@@ -312,171 +426,234 @@
       .person-card h3 {
         font-size: 0.9rem;
       }
+
+      .google-search-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Schema Markup for SEO -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Streamer University",
+      "url": "https://streameruniversityclass.com",
+      "description": "Streamer University Class of 2025 by Kai Cenat, featuring 18 professors and 104 students shaping the future of content creation.",
+      "founder": {
+        "@type": "Person",
+        "name": "Kai Cenat"
+      },
+      "event": {
+        "@type": "Event",
+        "name": "Streamer University Class of 2025",
+        "startDate": "2025-05-16",
+        "description": "Inaugural class announcement of Streamer University by Kai Cenat.",
+        "organizer": {
+          "@type": "Person",
+          "name": "Kai Cenat"
+        },
+        "attendee": [
+          {
+            "@type": "Person",
+            "name": "DDG"
+          },
+          {
+            "@type": "Person",
+            "name": "Chrisnxtdoor"
+          },
+          {
+            "@type": "Person",
+            "name": "Agent 00"
+          },
+          {
+            "@type": "Person",
+            "name": "HoneyyJade"
+          }
+        ]
+      }
+    }
+  </script>
+
   <!-- Fixed Top Banner -->
-  <div class="top-banner">
+  <header class="top-banner" id="top-banner">
     <h2>Check Out ogvk.org!</h2>
     <p>Join the ultimate streaming community at ogvk.org. Support us with BTC or ETH!</p>
     <div class="banner-actions">
-      <a href="https://ogvk.org" class="banner-button banner-button-visit">Visit ogvk.org</a>
-      <button class="banner-button banner-button-btc" data-copy="bc1qa0ynpvwhnjehfp06cerlvrrfdqvaeeyrekaa9d">
-        <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin Logo" style="width: 16px; height: 16px;">
+      <a href="https://ogvk.org" class="banner-button banner-button-visit" aria-label="Visit ogvk.org">Visit ogvk.org</a>
+      <button class="banner-button banner-button-btc" data-copy="bc1qa0ynpvwhnjehfp06cerlvrrfdqvaeeyrekaa9d" aria-label="Copy Bitcoin Address">
+        <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" alt="Bitcoin Logo" style="width: 16px; height: 16px;" loading="lazy">
         Copy BTC Address
       </button>
-      <button class="banner-button banner-button-eth" data-copy="0xF84E4324F59587dc220597429E153D2f244B2548">
-        <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum Logo" style="width: 16px; height: 16px;">
+      <button class="banner-button banner-button-eth" data-copy="0xF84E4324F59587dc220597429E153D2f244B2548" aria-label="Copy Ethereum Address">
+        <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" alt="Ethereum Logo" style="width: 16px; height: 16px;" loading="lazy">
         Copy ETH Address
       </button>
     </div>
-  </div>
+  </header>
 
   <!-- Main Content -->
-  <div class="container">
-    <div class="intro">
+  <main class="container">
+    <section class="intro">
       <h1>Streamer University Class of 2025</h1>
-      <p>Welcome to the inaugural class of Kai Cenat's Streamer University! Meet the talented professors and students shaping the future of content creation.</p>
+      <p>Welcome to the inaugural class of Kai Cenat's Streamer University! Meet the talented professors and students shaping the future of content creation in 2025.</p>
+    </section>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+      <input type="text" id="search-bar" class="search-bar" placeholder="Search for a professor or student..." aria-label="Search for a professor or student">
     </div>
 
     <!-- Professors Section -->
-    <div class="section">
-      <h2>Professors</h2>
-      <div class="people-grid">
-        <div class="person-card"><h3>DDG</h3></div>
-        <div class="person-card"><h3>Chrisnxtdoor</h3></div>
-        <div class="person-card"><h3>Agent 00</h3></div>
-        <div class="person-card"><h3>CookinWitKya</h3></div>
-        <div class="person-card"><h3>India Love</h3></div>
-        <div class="person-card"><h3>Iamthekingoffitness</h3></div>
-        <div class="person-card"><h3>ImDontai</h3></div>
-        <div class="person-card"><h3>Markus King</h3></div>
-        <div class="person-card"><h3>Duke Dennis</h3></div>
-        <div class="person-card"><h3>Cindy Gallop</h3></div>
-        <div class="person-card"><h3>Extra Emily</h3></div>
-        <div class="person-card"><h3>Preacherquís</h3></div>
-        <div class="person-card"><h3>AimHigh</h3></div>
-        <div class="person-card"><h3>Kaysan</h3></div>
-        <div class="person-card"><h3>Zias</h3></div>
-        <div class="person-card"><h3>B Lou</h3></div>
-        <div class="person-card"><h3>Funny Marco</h3></div>
-        <div class="person-card"><h3>Ojay Suave</h3></div>
+    <section class="section" id="professors-section">
+      <h2>Professors of Streamer University</h2>
+      <div class="people-grid" id="professors-grid">
+        <article class="person-card" data-name="DDG"><h3>DDG</h3><button class="google-search-btn" data-name="DDG" aria-label="Search DDG on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Chrisnxtdoor"><h3>Chrisnxtdoor</h3><button class="google-search-btn" data-name="Chrisnxtdoor" aria-label="Search Chrisnxtdoor on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Agent 00"><h3>Agent 00</h3><button class="google-search-btn" data-name="Agent 00" aria-label="Search Agent 00 on Google">Search on Google</button></article>
+        <article class="person-card" data-name="CookinWitKya"><h3>CookinWitKya</h3><button class="google-search-btn" data-name="CookinWitKya" aria-label="Search CookinWitKya on Google">Search on Google</button></article>
+        <article class="person-card" data-name="India Love"><h3>India Love</h3><button class="google-search-btn" data-name="India Love" aria-label="Search India Love on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Iamthekingoffitness"><h3>Iamthekingoffitness</h3><button class="google-search-btn" data-name="Iamthekingoffitness" aria-label="Search Iamthekingoffitness on Google">Search on Google</button></article>
+        <article class="person-card" data-name="ImDontai"><h3>ImDontai</h3><button class="google-search-btn" data-name="ImDontai" aria-label="Search ImDontai on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Markus King"><h3>Markus King</h3><button class="google-search-btn" data-name="Markus King" aria-label="Search Markus King on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Duke Dennis"><h3>Duke Dennis</h3><button class="google-search-btn" data-name="Duke Dennis" aria-label="Search Duke Dennis on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Cindy Gallop"><h3>Cindy Gallop</h3><button class="google-search-btn" data-name="Cindy Gallop" aria-label="Search Cindy Gallop on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Extra Emily"><h3>Extra Emily</h3><button class="google-search-btn" data-name="Extra Emily" aria-label="Search Extra Emily on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Preacherquís"><h3>Preacherquís</h3><button class="google-search-btn" data-name="Preacherquís" aria-label="Search Preacherquís on Google">Search on Google</button></article>
+        <article class="person-card" data-name="AimHigh"><h3>AimHigh</h3><button class="google-search-btn" data-name="AimHigh" aria-label="Search AimHigh on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Kaysan"><h3>Kaysan</h3><button class="google-search-btn" data-name="Kaysan" aria-label="Search Kaysan on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Zias"><h3>Zias</h3><button class="google-search-btn" data-name="Zias" aria-label="Search Zias on Google">Search on Google</button></article>
+        <article class="person-card" data-name="B Lou"><h3>B Lou</h3><button class="google-search-btn" data-name="B Lou" aria-label="Search B Lou on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Funny Marco"><h3>Funny Marco</h3><button class="google-search-btn" data-name="Funny Marco" aria-label="Search Funny Marco on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Ojay Suave"><h3>Ojay Suave</h3><button class="google-search-btn" data-name="Ojay Suave" aria-label="Search Ojay Suave on Google">Search on Google</button></article>
       </div>
-    </div>
+    </section>
 
     <!-- Students Section -->
-    <div class="section">
-      <h2>Students</h2>
-      <div class="people-grid">
-        <div class="person-card"><h3>HoneyyJade</h3></div>
-        <div class="person-card"><h3>Thinks</h3></div>
-        <div class="person-card"><h3>BrookFrost</h3></div>
-        <div class="person-card"><h3>Saryah</h3></div>
-        <div class="person-card"><h3>MyTen Makayla</h3></div>
-        <div class="person-card"><h3>Folaas</h3></div>
-        <div class="person-card"><h3>Scum TK</h3></div>
-        <div class="person-card"><h3>Shello</h3></div>
-        <div class="person-card"><h3>IamTinkT</h3></div>
-        <div class="person-card"><h3>Chicklet</h3></div>
-        <div class="person-card"><h3>Nina</h3></div>
-        <div class="person-card"><h3>Aaverie Iman</h3></div>
-        <div class="person-card"><h3>NolimitT</h3></div>
-        <div class="person-card"><h3>Juvetti</h3></div>
-        <div class="person-card"><h3>Strifecos</h3></div>
-        <div class="person-card"><h3>Gianni (GCTwins)</h3></div>
-        <div class="person-card"><h3>Meyrzam</h3></div>
-        <div class="person-card"><h3>LightSkinMonte</h3></div>
-        <div class="person-card"><h3>Yonna-4</h3></div>
-        <div class="person-card"><h3>Shank</h3></div>
-        <div class="person-card"><h3>Sophie Hyder</h3></div>
-        <div class="person-card"><h3>Brischee</h3></div>
-        <div class="person-card"><h3>Reggie</h3></div>
-        <div class="person-card"><h3>JankyRando</h3></div>
-        <div class="person-card"><h3>Rakai</h3></div>
-        <div class="person-card"><h3>Danny Bans</h3></div>
-        <div class="person-card"><h3>RipTRandy</h3></div>
-        <div class="person-card"><h3>Ayesmii</h3></div>
-        <div class="person-card"><h3>Tota</h3></div>
-        <div class="person-card"><h3>GiovaniGCTwins</h3></div>
-        <div class="person-card"><h3>SunnyMaharie</h3></div>
-        <div class="person-card"><h3>BarbieSkie</h3></div>
-        <div class="person-card"><h3>Izzy Kinda</h3></div>
-        <div class="person-card"><h3>Maleni (Chicklet)</h3></div>
-        <div class="person-card"><h3>HoodBabies</h3></div>
-        <div class="person-card"><h3>Wendy Ortiz</h3></div>
-        <div class="person-card"><h3>Evelyn Ortiz</h3></div>
-        <div class="person-card"><h3>BigWinna</h3></div>
-        <div class="person-card"><h3>Mrs Chim Chim</h3></div>
-        <div class="person-card"><h3>Maxwell Ye</h3></div>
-        <div class="person-card"><h3>2kboo</h3></div>
-        <div class="person-card"><h3>Corey2u</h3></div>
-        <div class="person-card"><h3>Aya</h3></div>
-        <div class="person-card"><h3>Punga</h3></div>
-        <div class="person-card"><h3>KeyahTheCreator</h3></div>
-        <div class="person-card"><h3>GinalaTshek</h3></div>
-        <div class="person-card"><h3>Junniehime</h3></div>
-        <div class="person-card"><h3>snowcone</h3></div>
-        <div class="person-card"><h3>Autumn Reign</h3></div>
-        <div class="person-card"><h3>Valan</h3></div>
-        <div class="person-card"><h3>Sara Sheehan</h3></div>
-        <div class="person-card"><h3>Mari</h3></div>
-        <div class="person-card"><h3>Vanessa Loud</h3></div>
-        <div class="person-card"><h3>SaltyGummiBear</h3></div>
-        <div class="person-card"><h3>Allison Kroes</h3></div>
-        <div class="person-card"><h3>Ray</h3></div>
-        <div class="person-card"><h3>Dezz</h3></div>
-        <div class="person-card"><h3>Thickey</h3></div>
-        <div class="person-card"><h3>Treasure Osiria</h3></div>
-        <div class="person-card"><h3>LightSkin Kim</h3></div>
-        <div class="person-card"><h3>Jamal</h3></div>
-        <div class="person-card"><h3>KingSammelot</h3></div>
-        <div class="person-card"><h3>Caiwus</h3></div>
-        <div class="person-card"><h3>Tueda Geez</h3></div>
-        <div class="person-card"><h3>Jay Cinco</h3></div>
-        <div class="person-card"><h3>Sholly KNS</h3></div>
-        <div class="person-card"><h3>Kelo</h3></div>
-        <div class="person-card"><h3>TurnBaby</h3></div>
-        <div class="person-card"><h3>BlasianyBabyLo</h3></div>
-        <div class="person-card"><h3>Khabes</h3></div>
-        <div class="person-card"><h3>Catalista</h3></div>
-        <div class="person-card"><h3>PrimePage</h3></div>
-        <div class="person-card"><h3>Dajeromo</h3></div>
-        <div class="person-card"><h3>Wande (Jam World TV)</h3></div>
-        <div class="person-card"><h3>Jo (Jam World TV)</h3></div>
-        <div class="person-card"><h3>IvanBetter</h3></div>
-        <div class="person-card"><h3>Alex and Jessica</h3></div>
-        <div class="person-card"><h3>BDestined</h3></div>
-        <div class="person-card"><h3>JPTGames</h3></div>
-        <div class="person-card"><h3>Kishka</h3></div>
-        <div class="person-card"><h3>Okaysirr</h3></div>
-        <div class="person-card"><h3>Tyli</h3></div>
-        <div class="person-card"><h3>Marcissist</h3></div>
-        <div class="person-card"><h3>CrushExotics</h3></div>
-        <div class="person-card"><h3>DatBoiGio</h3></div>
-        <div class="person-card"><h3>Emildziv</h3></div>
-        <div class="person-card"><h3>Yohan Uja</h3></div>
-        <div class="person-card"><h3>Raud</h3></div>
-        <div class="person-card"><h3>Nizzy</h3></div>
-        <div class="person-card"><h3>KokoNata</h3></div>
-        <div class="person-card"><h3>AlidoGotti</h3></div>
-        <div class="person-card"><h3>Evelyn and Bobby</h3></div>
-        <div class="person-card"><h3>Dabo</h3></div>
-        <div class="person-card"><h3>Arky</h3></div>
-        <div class="person-card"><h3>VBoogie</h3></div>
-        <div class="person-card"><h3>Ash Alk</h3></div>
-        <div class="person-card"><h3>Quan</h3></div>
-        <div class="person-card"><h3>EmilyCC</h3></div>
-        <div class="person-card"><h3>SamHam</h3></div>
-        <div class="person-card"><h3>LaLa</h3></div>
-        <div class="person-card"><h3>Iuvcynthia</h3></div>
-        <div class="person-card"><h3>Bribev</h3></div>
+    <section class="section" id="students-section">
+      <h2>Students of Streamer University</h2>
+      <div class="people-grid" id="students-grid">
+        <article class="person-card" data-name="HoneyyJade"><h3>HoneyyJade</h3><button class="google-search-btn" data-name="HoneyyJade" aria-label="Search HoneyyJade on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Thinks"><h3>Thinks</h3><button class="google-search-btn" data-name="Thinks" aria-label="Search Thinks on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BrookFrost"><h3>BrookFrost</h3><button class="google-search-btn" data-name="BrookFrost" aria-label="Search BrookFrost on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Saryah"><h3>Saryah</h3><button class="google-search-btn" data-name="Saryah" aria-label="Search Saryah on Google">Search on Google</button></article>
+        <article class="person-card" data-name="MyTen Makayla"><h3>MyTen Makayla</h3><button class="google-search-btn" data-name="MyTen Makayla" aria-label="Search MyTen Makayla on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Folaas"><h3>Folaas</h3><button class="google-search-btn" data-name="Folaas" aria-label="Search Folaas on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Scum TK"><h3>Scum TK</h3><button class="google-search-btn" data-name="Scum TK" aria-label="Search Scum TK on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Shello"><h3>Shello</h3><button class="google-search-btn" data-name="Shello" aria-label="Search Shello on Google">Search on Google</button></article>
+        <article class="person-card" data-name="IamTinkT"><h3>IamTinkT</h3><button class="google-search-btn" data-name="IamTinkT" aria-label="Search IamTinkT on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Chicklet"><h3>Chicklet</h3><button class="google-search-btn" data-name="Chicklet" aria-label="Search Chicklet on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Nina"><h3>Nina</h3><button class="google-search-btn" data-name="Nina" aria-label="Search Nina on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Aaverie Iman"><h3>Aaverie Iman</h3><button class="google-search-btn" data-name="Aaverie Iman" aria-label="Search Aaverie Iman on Google">Search on Google</button></article>
+        <article class="person-card" data-name="NolimitT"><h3>NolimitT</h3><button class="google-search-btn" data-name="NolimitT" aria-label="Search NolimitT on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Juvetti"><h3>Juvetti</h3><button class="google-search-btn" data-name="Juvetti" aria-label="Search Juvetti on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Strifecos"><h3>Strifecos</h3><button class="google-search-btn" data-name="Strifecos" aria-label="Search Strifecos on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Gianni (GCTwins)"><h3>Gianni (GCTwins)</h3><button class="google-search-btn" data-name="Gianni (GCTwins)" aria-label="Search Gianni (GCTwins) on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Meyrzam"><h3>Meyrzam</h3><button class="google-search-btn" data-name="Meyrzam" aria-label="Search Meyrzam on Google">Search on Google</button></article>
+        <article class="person-card" data-name="LightSkinMonte"><h3>LightSkinMonte</h3><button class="google-search-btn" data-name="LightSkinMonte" aria-label="Search LightSkinMonte on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Yonna-4"><h3>Yonna-4</h3><button class="google-search-btn" data-name="Yonna-4" aria-label="Search Yonna-4 on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Shank"><h3>Shank</h3><button class="google-search-btn" data-name="Shank" aria-label="Search Shank on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Sophie Hyder"><h3>Sophie Hyder</h3><button class="google-search-btn" data-name="Sophie Hyder" aria-label="Search Sophie Hyder on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Brischee"><h3>Brischee</h3><button class="google-search-btn" data-name="Brischee" aria-label="Search Brischee on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Reggie"><h3>Reggie</h3><button class="google-search-btn" data-name="Reggie" aria-label="Search Reggie on Google">Search on Google</button></article>
+        <article class="person-card" data-name="JankyRando"><h3>JankyRando</h3><button class="google-search-btn" data-name="JankyRando" aria-label="Search JankyRando on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Rakai"><h3>Rakai</h3><button class="google-search-btn" data-name="Rakai" aria-label="Search Rakai on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Danny Bans"><h3>Danny Bans</h3><button class="google-search-btn" data-name="Danny Bans" aria-label="Search Danny Bans on Google">Search on Google</button></article>
+        <article class="person-card" data-name="RipTRandy"><h3>RipTRandy</h3><button class="google-search-btn" data-name="RipTRandy" aria-label="Search RipTRandy on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Ayesmii"><h3>Ayesmii</h3><button class="google-search-btn" data-name="Ayesmii" aria-label="Search Ayesmii on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Tota"><h3>Tota</h3><button class="google-search-btn" data-name="Tota" aria-label="Search Tota on Google">Search on Google</button></article>
+        <article class="person-card" data-name="GiovaniGCTwins"><h3>GiovaniGCTwins</h3><button class="google-search-btn" data-name="GiovaniGCTwins" aria-label="Search GiovaniGCTwins on Google">Search on Google</button></article>
+        <article class="person-card" data-name="SunnyMaharie"><h3>SunnyMaharie</h3><button class="google-search-btn" data-name="SunnyMaharie" aria-label="Search SunnyMaharie on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BarbieSkie"><h3>BarbieSkie</h3><button class="google-search-btn" data-name="BarbieSkie" aria-label="Search BarbieSkie on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Izzy Kinda"><h3>Izzy Kinda</h3><button class="google-search-btn" data-name="Izzy Kinda" aria-label="Search Izzy Kinda on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Maleni (Chicklet)"><h3>Maleni (Chicklet)</h3><button class="google-search-btn" data-name="Maleni (Chicklet)" aria-label="Search Maleni (Chicklet) on Google">Search on Google</button></article>
+        <article class="person-card" data-name="HoodBabies"><h3>HoodBabies</h3><button class="google-search-btn" data-name="HoodBabies" aria-label="Search HoodBabies on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Wendy Ortiz"><h3>Wendy Ortiz</h3><button class="google-search-btn" data-name="Wendy Ortiz" aria-label="Search Wendy Ortiz on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Evelyn Ortiz"><h3>Evelyn Ortiz</h3><button class="google-search-btn" data-name="Evelyn Ortiz" aria-label="Search Evelyn Ortiz on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BigWinna"><h3>BigWinna</h3><button class="google-search-btn" data-name="BigWinna" aria-label="Search BigWinna on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Mrs Chim Chim"><h3>Mrs Chim Chim</h3><button class="google-search-btn" data-name="Mrs Chim Chim" aria-label="Search Mrs Chim Chim on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Maxwell Ye"><h3>Maxwell Ye</h3><button class="google-search-btn" data-name="Maxwell Ye" aria-label="Search Maxwell Ye on Google">Search on Google</button></article>
+        <article class="person-card" data-name="2kboo"><h3>2kboo</h3><button class="google-search-btn" data-name="2kboo" aria-label="Search 2kboo on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Corey2u"><h3>Corey2u</h3><button class="google-search-btn" data-name="Corey2u" aria-label="Search Corey2u on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Aya"><h3>Aya</h3><button class="google-search-btn" data-name="Aya" aria-label="Search Aya on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Punga"><h3>Punga</h3><button class="google-search-btn" data-name="Punga" aria-label="Search Punga on Google">Search on Google</button></article>
+        <article class="person-card" data-name="KeyahTheCreator"><h3>KeyahTheCreator</h3><button class="google-search-btn" data-name="KeyahTheCreator" aria-label="Search KeyahTheCreator on Google">Search on Google</button></article>
+        <article class="person-card" data-name="GinalaTshek"><h3>GinalaTshek</h3><button class="google-search-btn" data-name="GinalaTshek" aria-label="Search GinalaTshek on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Junniehime"><h3>Junniehime</h3><button class="google-search-btn" data-name="Junniehime" aria-label="Search Junniehime on Google">Search on Google</button></article>
+        <article class="person-card" data-name="snowcone"><h3>snowcone</h3><button class="google-search-btn" data-name="snowcone" aria-label="Search snowcone on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Autumn Reign"><h3>Autumn Reign</h3><button class="google-search-btn" data-name="Autumn Reign" aria-label="Search Autumn Reign on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Valan"><h3>Valan</h3><button class="google-search-btn" data-name="Valan" aria-label="Search Valan on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Sara Sheehan"><h3>Sara Sheehan</h3><button class="google-search-btn" data-name="Sara Sheehan" aria-label="Search Sara Sheehan on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Mari"><h3>Mari</h3><button class="google-search-btn" data-name="Mari" aria-label="Search Mari on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Vanessa Loud"><h3>Vanessa Loud</h3><button class="google-search-btn" data-name="Vanessa Loud" aria-label="Search Vanessa Loud on Google">Search on Google</button></article>
+        <article class="person-card" data-name="SaltyGummiBear"><h3>SaltyGummiBear</h3><button class="google-search-btn" data-name="SaltyGummiBear" aria-label="Search SaltyGummiBear on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Allison Kroes"><h3>Allison Kroes</h3><button class="google-search-btn" data-name="Allison Kroes" aria-label="Search Allison Kroes on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Ray"><h3>Ray</h3><button class="google-search-btn" data-name="Ray" aria-label="Search Ray on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Dezz"><h3>Dezz</h3><button class="google-search-btn" data-name="Dezz" aria-label="Search Dezz on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Thickey"><h3>Thickey</h3><button class="google-search-btn" data-name="Thickey" aria-label="Search Thickey on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Treasure Osiria"><h3>Treasure Osiria</h3><button class="google-search-btn" data-name="Treasure Osiria" aria-label="Search Treasure Osiria on Google">Search on Google</button></article>
+        <article class="person-card" data-name="LightSkin Kim"><h3>LightSkin Kim</h3><button class="google-search-btn" data-name="LightSkin Kim" aria-label="Search LightSkin Kim on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Jamal"><h3>Jamal</h3><button class="google-search-btn" data-name="Jamal" aria-label="Search Jamal on Google">Search on Google</button></article>
+        <article class="person-card" data-name="KingSammelot"><h3>KingSammelot</h3><button class="google-search-btn" data-name="KingSammelot" aria-label="Search KingSammelot on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Caiwus"><h3>Caiwus</h3><button class="google-search-btn" data-name="Caiwus" aria-label="Search Caiwus on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Tueda Geez"><h3>Tueda Geez</h3><button class="google-search-btn" data-name="Tueda Geez" aria-label="Search Tueda Geez on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Jay Cinco"><h3>Jay Cinco</h3><button class="google-search-btn" data-name="Jay Cinco" aria-label="Search Jay Cinco on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Sholly KNS"><h3>Sholly KNS</h3><button class="google-search-btn" data-name="Sholly KNS" aria-label="Search Sholly KNS on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Kelo"><h3>Kelo</h3><button class="google-search-btn" data-name="Kelo" aria-label="Search Kelo on Google">Search on Google</button></article>
+        <article class="person-card" data-name="TurnBaby"><h3>TurnBaby</h3><button class="google-search-btn" data-name="TurnBaby" aria-label="Search TurnBaby on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BlasianyBabyLo"><h3>BlasianyBabyLo</h3><button class="google-search-btn" data-name="BlasianyBabyLo" aria-label="Search BlasianyBabyLo on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Khabes"><h3>Khabes</h3><button class="google-search-btn" data-name="Khabes" aria-label="Search Khabes on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Catalista"><h3>Catalista</h3><button class="google-search-btn" data-name="Catalista" aria-label="Search Catalista on Google">Search on Google</button></article>
+        <article class="person-card" data-name="PrimePage"><h3>PrimePage</h3><button class="google-search-btn" data-name="PrimePage" aria-label="Search PrimePage on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Dajeromo"><h3>Dajeromo</h3><button class="google-search-btn" data-name="Dajeromo" aria-label="Search Dajeromo on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Wande (Jam World TV)"><h3>Wande (Jam World TV)</h3><button class="google-search-btn" data-name="Wande (Jam World TV)" aria-label="Search Wande (Jam World TV) on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Jo (Jam World TV)"><h3>Jo (Jam World TV)</h3><button class="google-search-btn" data-name="Jo (Jam World TV)" aria-label="Search Jo (Jam World TV) on Google">Search on Google</button></article>
+        <article class="person-card" data-name="IvanBetter"><h3>IvanBetter</h3><button class="google-search-btn" data-name="IvanBetter" aria-label="Search IvanBetter on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Alex and Jessica"><h3>Alex and Jessica</h3><button class="google-search-btn" data-name="Alex and Jessica" aria-label="Search Alex and Jessica on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BDestined"><h3>BDestined</h3><button class="google-search-btn" data-name="BDestined" aria-label="Search BDestined on Google">Search on Google</button></article>
+        <article class="person-card" data-name="JPTGames"><h3>JPTGames</h3><button class="google-search-btn" data-name="JPTGames" aria-label="Search JPTGames on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Kishka"><h3>Kishka</h3><button class="google-search-btn" data-name="Kishka" aria-label="Search Kishka on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Okaysirr"><h3>Okaysirr</h3><button class="google-search-btn" data-name="Okaysirr" aria-label="Search Okaysirr on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Tyli"><h3>Tyli</h3><button class="google-search-btn" data-name="Tyli" aria-label="Search Tyli on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Marcissist"><h3>Marcissist</h3><button class="google-search-btn" data-name="Marcissist" aria-label="Search Marcissist on Google">Search on Google</button></article>
+        <article class="person-card" data-name="CrushExotics"><h3>CrushExotics</h3><button class="google-search-btn" data-name="CrushExotics" aria-label="Search CrushExotics on Google">Search on Google</button></article>
+        <article class="person-card" data-name="DatBoiGio"><h3>DatBoiGio</h3><button class="google-search-btn" data-name="DatBoiGio" aria-label="Search DatBoiGio on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Emildziv"><h3>Emildziv</h3><button class="google-search-btn" data-name="Emildziv" aria-label="Search Emildziv on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Yohan Uja"><h3>Yohan Uja</h3><button class="google-search-btn" data-name="Yohan Uja" aria-label="Search Yohan Uja on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Raud"><h3>Raud</h3><button class="google-search-btn" data-name="Raud" aria-label="Search Raud on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Nizzy"><h3>Nizzy</h3><button class="google-search-btn" data-name="Nizzy" aria-label="Search Nizzy on Google">Search on Google</button></article>
+        <article class="person-card" data-name="KokoNata"><h3>KokoNata</h3><button class="google-search-btn" data-name="KokoNata" aria-label="Search KokoNata on Google">Search on Google</button></article>
+        <article class="person-card" data-name="AlidoGotti"><h3>AlidoGotti</h3><button class="google-search-btn" data-name="AlidoGotti" aria-label="Search AlidoGotti on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Evelyn and Bobby"><h3>Evelyn and Bobby</h3><button class="google-search-btn" data-name="Evelyn and Bobby" aria-label="Search Evelyn and Bobby on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Dabo"><h3>Dabo</h3><button class="google-search-btn" data-name="Dabo" aria-label="Search Dabo on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Arky"><h3>Arky</h3><button class="google-search-btn" data-name="Arky" aria-label="Search Arky on Google">Search on Google</button></article>
+        <article class="person-card" data-name="VBoogie"><h3>VBoogie</h3><button class="google-search-btn" data-name="VBoogie" aria-label="Search VBoogie on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Ash Alk"><h3>Ash Alk</h3><button class="google-search-btn" data-name="Ash Alk" aria-label="Search Ash Alk on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Quan"><h3>Quan</h3><button class="google-search-btn" data-name="Quan" aria-label="Search Quan on Google">Search on Google</button></article>
+        <article class="person-card" data-name="EmilyCC"><h3>EmilyCC</h3><button class="google-search-btn" data-name="EmilyCC" aria-label="Search EmilyCC on Google">Search on Google</button></article>
+        <article class="person-card" data-name="SamHam"><h3>SamHam</h3><button class="google-search-btn" data-name="SamHam" aria-label="Search SamHam on Google">Search on Google</button></article>
+        <article class="person-card" data-name="LaLa"><h3>LaLa</h3><button class="google-search-btn" data-name="LaLa" aria-label="Search LaLa on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Iuvcynthia"><h3>Iuvcynthia</h3><button class="google-search-btn" data-name="Iuvcynthia" aria-label="Search Iuvcynthia on Google">Search on Google</button></article>
+        <article class="person-card" data-name="Bribev"><h3>Bribev</h3><button class="google-search-btn" data-name="Bribev" aria-label="Search Bribev on Google">Search on Google</button></article>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Streamer University. All rights reserved. | <a href="/about">About Streamer University</a> | <a href="/contact">Contact Us</a></p>
+  </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Adjust body padding based on banner height
+      const banner = document.getElementById('top-banner');
+      const bannerHeight = banner.offsetHeight;
+      document.body.style.paddingTop = `${bannerHeight + 20}px`;
+
       // Toast notification function
       function showToast(message) {
         let toast = document.querySelector('.toast');
@@ -529,9 +706,58 @@
         });
       }
 
+      // Search functionality
+      const searchBar = document.getElementById('search-bar');
+      const professorsGrid = document.getElementById('professors-grid');
+      const studentsGrid = document.getElementById('students-grid');
+      const professorsSection = document.getElementById('professors-section');
+      const studentsSection = document.getElementById('students-section');
+
+      searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase();
+        
+        // Filter Professors
+        const professorCards = professorsGrid.querySelectorAll('.person-card');
+        let professorMatchCount = 0;
+        professorCards.forEach(card => {
+          const name = card.getAttribute('data-name').toLowerCase();
+          if (name.includes(searchTerm)) {
+            card.style.display = 'flex';
+            professorMatchCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        professorsSection.style.display = professorMatchCount > 0 || searchTerm === '' ? 'block' : 'none';
+
+        // Filter Students
+        const studentCards = studentsGrid.querySelectorAll('.person-card');
+        let studentMatchCount = 0;
+        studentCards.forEach(card => {
+          const name = card.getAttribute('data-name').toLowerCase();
+          if (name.includes(searchTerm)) {
+            card.style.display = 'flex';
+            studentMatchCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        studentsSection.style.display = studentMatchCount > 0 || searchTerm === '' ? 'block' : 'none';
+      });
+
+      // Google Search Buttons
+      document.querySelectorAll('.google-search-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const name = button.getAttribute('data-name');
+          const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(name)}`;
+          window.open(googleSearchUrl, '_blank');
+        });
+      });
+
       // Initial binding of crypto buttons
       bindCryptoButtons();
     });
   </script>
 </body>
 </html>
+<!-- Note: For a full website, consider creating a sitemap.xml and submitting it to search engines for better indexing. -->
