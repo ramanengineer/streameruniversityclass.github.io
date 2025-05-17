@@ -93,6 +93,7 @@
       justify-content: center;
       gap: 0.75rem;
       flex-wrap: wrap;
+      margin-bottom: 0.75rem;
     }
 
     .banner-button {
@@ -137,11 +138,11 @@
       background: #2c2c2c;
     }
 
-    /* Search Bar */
+    /* Search Bar in Banner */
     .search-container {
       width: 100%;
       max-width: 600px;
-      margin: 0 auto 2rem;
+      margin: 0 auto;
       position: relative;
     }
 
@@ -164,6 +165,51 @@
 
     .search-bar::placeholder {
       color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Autocomplete Dropdown */
+    .autocomplete-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--rules-bg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .autocomplete-dropdown.show {
+      display: block;
+    }
+
+    .autocomplete-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .autocomplete-item:hover {
+      background: rgba(255, 0, 123, 0.1);
+    }
+
+    .autocomplete-item img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 0.75rem;
+      object-fit: cover;
+    }
+
+    .autocomplete-item span {
+      font-size: 0.9rem;
+      color: var(--text);
     }
 
     /* Main Layout */
@@ -493,6 +539,11 @@
         Copy ETH Address
       </button>
     </div>
+    <!-- Search Bar in Banner -->
+    <div class="search-container">
+      <input type="text" id="search-bar" class="search-bar" placeholder="Search for a professor or student..." aria-label="Search for a professor or student">
+      <div class="autocomplete-dropdown" id="autocomplete-dropdown"></div>
+    </div>
   </header>
 
   <!-- Main Content -->
@@ -501,11 +552,6 @@
       <h1>Streamer University Class of 2025</h1>
       <p>Welcome to the inaugural class of Kai Cenat's Streamer University! Meet the talented professors and students shaping the future of content creation in 2025.</p>
     </section>
-
-    <!-- Search Bar -->
-    <div class="search-container">
-      <input type="text" id="search-bar" class="search-bar" placeholder="Search for a professor or student..." aria-label="Search for a professor or student">
-    </div>
 
     <!-- Professors Section -->
     <section class="section" id="professors-section">
@@ -538,7 +584,7 @@
       <div class="people-grid" id="students-grid">
         <article class="person-card" data-name="HoneyyJade"><h3>HoneyyJade</h3><button class="google-search-btn" data-name="HoneyyJade" aria-label="Search HoneyyJade on Google">Search on Google</button></article>
         <article class="person-card" data-name="Thinks"><h3>Thinks</h3><button class="google-search-btn" data-name="Thinks" aria-label="Search Thinks on Google">Search on Google</button></article>
-        <article class="person-card" data-name="BrookFrost"><h3>BrookFrost</h3><button class="google-search-btn" data-name="BrookFrost" aria-label="Search BrookFrost on Google">Search on Google</button></article>
+        <article class="person-card" data-name="BrookFrost"><h3>BrookFrost Shoes><button class="google-search-btn" data-name="BrookFrost" aria-label="Search BrookFrost on Google">Search on Google</button></article>
         <article class="person-card" data-name="Saryah"><h3>Saryah</h3><button class="google-search-btn" data-name="Saryah" aria-label="Search Saryah on Google">Search on Google</button></article>
         <article class="person-card" data-name="MyTen Makayla"><h3>MyTen Makayla</h3><button class="google-search-btn" data-name="MyTen Makayla" aria-label="Search MyTen Makayla on Google">Search on Google</button></article>
         <article class="person-card" data-name="Folaas"><h3>Folaas</h3><button class="google-search-btn" data-name="Folaas" aria-label="Search Folaas on Google">Search on Google</button></article>
@@ -712,10 +758,56 @@
       const studentsGrid = document.getElementById('students-grid');
       const professorsSection = document.getElementById('professors-section');
       const studentsSection = document.getElementById('students-section');
+      const autocompleteDropdown = document.getElementById('autocomplete-dropdown');
 
+      // Collect all names for autocomplete
+      const allNames = [];
+      document.querySelectorAll('.person-card').forEach(card => {
+        allNames.push(card.getAttribute('data-name'));
+      });
+
+      // Autocomplete functionality
       searchBar.addEventListener('input', () => {
         const searchTerm = searchBar.value.toLowerCase();
-        
+        autocompleteDropdown.innerHTML = '';
+
+        if (searchTerm) {
+          const matchingNames = allNames.filter(name => name.toLowerCase().includes(searchTerm)).slice(0, 5);
+          if (matchingNames.length > 0) {
+            matchingNames.forEach(name => {
+              const item = document.createElement('div');
+              item.className = 'autocomplete-item';
+              item.innerHTML = `
+                <img src="https://i.postimg.cc/4d5GPyHV/streameruniversityclass.png" alt="${name} avatar">
+                <span>${name}</span>
+              `;
+              item.addEventListener('click', () => {
+                searchBar.value = name;
+                autocompleteDropdown.innerHTML = '';
+                autocompleteDropdown.classList.remove('show');
+                filterCards(name.toLowerCase());
+              });
+              autocompleteDropdown.appendChild(item);
+            });
+            autocompleteDropdown.classList.add('show');
+          } else {
+            autocompleteDropdown.classList.remove('show');
+          }
+        } else {
+          autocompleteDropdown.classList.remove('show');
+          filterCards('');
+        }
+      });
+
+      // Hide autocomplete on click outside
+      document.addEventListener('click', (e) => {
+        if (!searchBar.contains(e.target) && !autocompleteDropdown.contains(e.target)) {
+          autocompleteDropdown.classList.remove('show');
+        }
+      });
+
+      // Filter cards function
+      function filterCards(searchTerm) {
         // Filter Professors
         const professorCards = professorsGrid.querySelectorAll('.person-card');
         let professorMatchCount = 0;
@@ -743,13 +835,13 @@
           }
         });
         studentsSection.style.display = studentMatchCount > 0 || searchTerm === '' ? 'block' : 'none';
-      });
+      }
 
       // Google Search Buttons
       document.querySelectorAll('.google-search-btn').forEach(button => {
         button.addEventListener('click', () => {
           const name = button.getAttribute('data-name');
-          const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(name)}`;
+          const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(name + ' twitch')}`;
           window.open(googleSearchUrl, '_blank');
         });
       });
